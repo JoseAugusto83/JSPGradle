@@ -5,6 +5,9 @@
     for(int indice = 0; indice < 10; indice++){
         resultado[indice] = (indice + 1) * 5;
     }
+
+    request.setAttribute("tabuada", resultado);
+
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,9 +19,11 @@
 </head>
 <body>
     <h1>Olá JSP!!!</h1>
-    <% for(int num = 1; num <= 10; num++){ %>
-        <li><%= num * 5 %></li>
-    <% } %>
+    <ul>
+        <% for(int num = 1; num <= 10; num++){ %>
+            <li><%= num * 5 %></li>
+        <% } %>
+    </ul>
     
     <hr>
 
@@ -26,6 +31,14 @@
         <% for(int valor : resultado) { %>
             <li><%= valor %></li>
         <% } %>
+    </ul>
+
+    <hr>
+
+    <ul>
+        <c:forEach var="num" items="${tabuada}">
+            <li>${num}</li>
+        </c:forEach>
     </ul>
 </body>
 </html>
